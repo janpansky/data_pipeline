@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: fct_orders
+    meta:
+      gooddata:
+        model_id: fct_orders
+    columns:
+      - name: order_id
+        tests:
+          - dbt_constraints.primary_key
+        meta:
+          gooddata:
+            ldm_type: primary_key
+
+      - name: user_id
+        tests:
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('dim_users')
+              pk_column_name: user_id
+        meta:
+          gooddata:
+            ldm_type: reference
+            referenced_table: dim_users
+
+      - name: order_date
+        meta:
+          gooddata:
+            ldm_type: date
+
+      - name: amount_usd
+        meta:
+          gooddata:
+            ldm_type: fact

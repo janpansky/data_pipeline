@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw
+    database: ENTERPRISE_DEMO
+    schema: DATA_PIPELINE
+    tables:
+      - name: raw_users
+      - name: raw_orders
+      - name: raw_countries

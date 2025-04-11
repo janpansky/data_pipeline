@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: dim_users
+    meta:
+      gooddata:
+        model_id: dim_users
+    columns:
+      - name: user_id
+        tests:
+          - dbt_constraints.primary_key
+        meta:
+          gooddata:
+            ldm_type: primary_key
+
+      - name: country_code
+        tests: [ ]
+        meta:
+          gooddata:
+            ldm_type: reference
+            referenced_table: dim_countries
+
+      - name: email
+        meta:
+          gooddata:
+            ldm_type: attribute
+
+      - name: signup_date
+        meta:
+          gooddata:
+            ldm_type: date
